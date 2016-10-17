@@ -1,0 +1,45 @@
+<h1>Hello, <welcome /></h1>
+<div class="leads">
+    <div class="calc__top">
+        <ul>
+            <li><a href="/{{solutionId}}/edit/design">Calculator</a></li>
+            <li class="active"><a href="#">Leads</a></li>
+        </ul>
+    </div>
+    <div class="calc__wrap">
+      <div ng-show="!isLoad && leads.length == 0">
+        Empty...
+      </div>
+       <table class="leads-table" ng-show="leads.length > 0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>E-mail</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="lead in leads">
+          <tr>
+            <td>
+              <strong>{{lead.name | limitTo: 25}}</strong>
+            </td>
+            <td>
+              <strong>{{lead.phone | limitTo: 25}}</strong>
+            </td>
+            <td>
+              <span class="leads-table__email">{{lead.email | limitTo: 25}}</span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" class="leads-table__txt">
+              {{lead.message | limitTo: 512}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="leads-loader" ng-show="isLoad">
+      <img src="img/loading.gif" alt="">
+    </div>
+</div>

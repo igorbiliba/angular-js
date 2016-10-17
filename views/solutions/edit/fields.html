@@ -1,0 +1,131 @@
+<h1>Hello, <welcome /></h1>
+<div class="calc">
+    <div class="calc__top">
+        <ul>
+            <li class="active"><a href="#">Calculator</a></li>
+            <li><a href="/{{solution.id}}/leads">Leads</a></li>
+        </ul>
+    </div>
+    <div class="calc__wrap">
+        <div class="calc__select">
+            <ul class="calc__list">
+                <li class="calc__item"><a href="/{{solution.id}}/edit/design">Choose design</a></li>
+                <li class="calc__item calc__item--active"><a href="#">Calculator Form</a></li>
+                <li class="calc__item"><a href="/{{solution.id}}/edit/graph">Result graph</a></li>
+                <li class="calc__item"><a href="/{{solution.id}}/edit/contacts">Lean Gen form</a></li>
+                <li class="calc__item"><a href="/{{solution.id}}/code">Get code</a></li>
+            </ul>
+        </div>
+        <div class="calc__choose">
+            <h4>Roofing Calculator</h4>
+            <div class="calc__choose-table-wrap calc__choose-calc-items">
+                <form action="#" method="post">
+                    <table>
+                        <theader>
+                          <tr>
+                              <th width="375">Calculator fields:</th>
+                              <th width="100">Enabled:</th>
+                              <th>Options:</th>
+                          </tr>
+                        </theader>
+
+                        <tbody ng-repeat="field in fields">
+                          <tr ng-if="field.values.length == 0">
+                              <td width="375">
+                                  <label>{{field.name}}:</label>
+                                  <input disabled="" ng-blur="updateField(field)" type="text" class="calc__choose-input calc__choose-input--middle" ng-model="field.defaultVal" value="{{field.defaultVal}}">
+                              </td>
+                              <td width="100">
+                                  <div class="checkbox-wrap">
+                                      <input ng-change="updateField(field)" type="checkbox" id="edit{{field.id}}" name="edit" ng-model="field.enabled" value="{{field.enabled}}">
+                                      <label for="edit{{field.id}}">&nbsp;</label>
+                                  </div>
+                              </td>
+                              <td align="center">
+                                  <a href="#" ng-click="updateFieldModal(field)" class="calc__choose-edit__btn popup_open" rel="#roof">Edit</a>
+                              </td>
+                          </tr>
+                          <tr ng-if="field.values.length > 0">
+                              <td width="375">
+                                  <label>{{field.name}}:</label>
+                                  <select ng-chacnge="updateField(field)"
+                                    class="calc__choose-input"
+                                    ng-model="field.defaultVal"
+                                    ng-click="loadOptions(field)"
+                                    ng-change="updateField(field)"
+                                    ng-options="value.name as value.name for value in field.values"></select>
+                              </td>
+                              <td width="100">
+                                  <div class="checkbox-wrap">
+                                      <input ng-change="updateField(field)" type="checkbox" id="edit{{field.id}}" name="edit" ng-model="field.enabled" value="{{field.enabled}}">
+                                      <label for="edit{{field.id}}">&nbsp;</label>
+                                  </div>
+                              </td>
+                              <td align="center">
+                                  <a href="#" ng-click="updateSelectedField(field)" class="calc__choose-edit__btn popup_open" rel="#material1">Edit</a>
+                              </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </form>
+            </div>
+        </div>
+        <div class="calc__buttons">
+            <preview />
+            <a href="/{{solution.id}}/edit/graph" class="calc__btn calc__btn--green-theme calc__btn--right">next step</a>
+            <a href="/{{solution.id}}/edit/design" class="calc__btn calc__btn--blue-theme calc__btn--right">back</a>
+        </div>
+    </div>
+</div>
+
+
+<div id="material1" class="popup" style="display: none; top: 70px;">
+    <div class="popup-padding">
+        <a href="" class="popup_close"></a>
+        <div class="roof__list">
+            <div ng-repeat="value in selectedField.values">
+              <div class="roof-list__item">
+                  <div class="input-wrap">
+                      <label ng-show="selectedField.values.indexOf(value) == 0">Material name:</label>
+                      <input type="text" class="calc__choose-input calc__choose-input--name" value="{{value.name}}" ng-model="value.name">
+                  </div>
+                  <div class="input-wrap">
+                      <label ng-show="selectedField.values.indexOf(value) == 0">Price per sq:</label>
+                      <input type="text" class="calc__choose-input calc__choose-input--val" ng-model="value.value" value="{{value.value}}">
+                  </div>
+                  <a href="#" ng-click="deleteValue(value)" class="roof-list__item-delete"></a>
+              </div>
+            </div>
+
+            <a href="#" class="add-new" ng-click="addNewMaterial(selectedField)">
+                Add new material
+            </a>
+        </div>
+        <div class="mobile-btn-wrap">
+            <a href="#" class="calc__btn calc__btn--blue-theme close_popup">Cancel</a>
+            <a href="#" ng-click="updateValues(selectedField)" class="calc__btn calc__btn--green-theme close_popup">Save changes</a>
+        </div>
+    </div>
+</div>
+
+<div id="roof" class="popup" style="display: none; top: 70px;">
+    <div class="popup-padding">
+        <a href="" class="popup_close"></a>
+        <div class="roof__list">
+            <div class="roof-list__item">
+                <div class="input-wrap">
+                    <label>Name:</label>
+                    <input type="text" class="calc__choose-input calc__choose-input--name" value="{{fieldModal.name}}" disabled="">
+                </div>
+                <div class="input-wrap">
+                    <label>Default value:</label>
+                    <input type="text" class="calc__choose-input calc__choose-input--val" ng-model="fieldModal.defaultVal" value="{{fieldModal.defaultVal}}">
+                </div>
+            </div>
+        </div>
+        <div class="mobile-btn-wrap">
+            <a href="#" class="calc__btn calc__btn--blue-theme close_popup">Cancel</a>
+            <a href="#" ng-click="updateField(fieldModal)" class="calc__btn calc__btn--green-theme close_popup">Save changes</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<h1>Hello, <welcome /></h1>
+<div class="calc">
+    <div class="calc__top">
+        <ul>
+            <li class="active"><a href="#">Calculator</a></li>
+            <li><a href="/{{contacts[0].solution}}/leads">Leads</a></li>
+        </ul>
+    </div>
+    <div class="calc__wrap">
+        <div class="calc__select">
+            <ul class="calc__list">
+                <li class="calc__item"><a href="/{{contacts[0].solution}}/edit/design">Choose design</a></li>
+                <li class="calc__item"><a href="/{{contacts[0].solution}}/edit/fields">Calculator Form</a></li>
+                <li class="calc__item"><a href="/{{contacts[0].solution}}/edit/graph">Result graph</a></li>
+                <li class="calc__item calc__item--active"><a href="#">Lean Gen form</a></li>
+                <li class="calc__item"><a href="/{{contacts[0].solution}}/code">Get code</a></li>
+            </ul>
+        </div>
+        <div class="calc__choose">
+            <div class="calc__choose-txt">
+                <h4>Choose results graph:</h4>
+            </div>
+            <div class="calc__choose-table-wrap calc__choose-calc-items">
+                <form action="#" method="post">
+                    <table>
+                      <thead>
+                          <tr>
+                              <th width="415">Calculator fields:</th>
+                              <th width="100">Required:</th>
+                              <th>Enabled:</th>
+                          </tr>
+                      </thead>
+                      <tbody ng-repeat="contact in contacts">
+                        <tr ng-if="contact.typeField == 'text'">
+                            <td width="415">
+                                <label>{{contact.name}}:</label>
+                                <input disabled="" type="text" class="calc__choose-input">
+                            </td>
+                            <td width="100">
+                                <div class="checkbox-wrap">
+                                    <input type="checkbox" id="required{{contact.id}}" name="required{{contact.id}}" value="{{contact.required}}" ng-model="contact.required"
+                                      ng-click="udapte('required', contact)">
+                                    <label for="required{{contact.id}}">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox-wrap">
+                                    <input type="checkbox" id="enabled{{contact.id}}" name="enabled{{contact.id}}" value="{{contact.enabled}}" ng-model="contact.enabled"
+                                      ng-click="udapte('enabled', contact)">
+                                    <label for="enabled{{contact.id}}">&nbsp;</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr  ng-if="contact.typeField == 'textarea'">
+                            <td width="415">
+                                <label>{{contact.name}}:</label>
+                                <textarea style="background-color: #fff;" disabled="" class="calc__choose-textarea"></textarea>
+                            </td>
+                            <td width="100">
+                                <div class="checkbox-wrap">
+                                    <input type="checkbox" id="required{{contact.id}}" name="required{{contact.id}}" value="{{contact.required}}" ng-model="contact.required"
+                                      ng-click="udapte('required', contact)">
+                                    <label for="required{{contact.id}}">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox-wrap">
+                                    <input type="checkbox" id="enabled{{contact.id}}" name="enabled{{contact.id}}" value="{{contact.enabled}}" ng-model="contact.enabled"
+                                      ng-click="udapte('enabled', contact)">
+                                    <label for="enabled{{contact.id}}">&nbsp;</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </form>
+            </div>
+        </div>
+        <div class="calc__buttons">
+            <preview />
+            <a href="/{{contacts[0].solution}}/code" class="calc__btn calc__btn--green-theme calc__btn--right">next step</a>
+            <a href="/{{contacts[0].solution}}/edit/graph" class="calc__btn calc__btn--blue-theme calc__btn--right">back</a>
+        </div>
+    </div>
+</div>

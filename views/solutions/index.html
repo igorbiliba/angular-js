@@ -1,0 +1,52 @@
+<h1>Plugins list</h1>
+<h2>
+    Convert your website traffic into leads
+</h2>
+<ol class="plugins-list">
+    <li class="plugins-list__item">
+        <div class="plugins-list__item-icon">
+            <img src="img/plugin-i1.png" alt="">
+        </div>
+    </li>
+    <li class="plugins-list__item">
+        <div class="plugins-list__item-icon">
+            <img src="img/plugin-i2.png" alt="">
+        </div>
+    </li>
+    <li class="plugins-list__item">
+        <div class="plugins-list__item-icon">
+            <img src="img/plugin-i3.png" alt="">
+        </div>
+    </li>
+    <li class="plugins-list__item">
+        <div class="plugins-list__item-icon">
+            <img src="img/plugin-i4.png" alt="">
+        </div>
+    </li>
+</ol>
+
+<ol class="plugins-txt-list">
+    <li class="plugins-txt-list__item"><span>The fundamental difference is that significant amount of aerodynamic lift.</span></li>
+    <li class="plugins-txt-list__item"><span>40 per cent of our lift comes aerodynamically. It can also carry much more stuff despite being a smaller aircraft.</span></li>
+    <li class="plugins-txt-list__item"><span>The biggest airships in history could carry around 50 tons and they were about three times the length of the Airlander 10.</span></li>
+    <li class="plugins-txt-list__item"><span>We have a really modern aircraft with the latest composite materials.</span></li>
+</ol>
+<h2>
+    Our solutions
+</h2>
+<div class="solutions-list" ng-repeat="solution in solutions">
+    <div class="solutions-list__item">
+        <div class="solutions-list__img">
+            <img src="http://placehold.it/250x160" alt="">
+        </div>
+        <div class="solutions-list__info">
+            <div class="solutions-list__title">
+                {{solution.name}}
+            </div>
+            {{solution.description}}
+        </div>
+        <div class="solutions-list__btn">
+            <a href="/{{solution.id}}/edit/design" class="st-btn">edit</a>
+        </div>
+    </div>
+</div>

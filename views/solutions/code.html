@@ -1,0 +1,41 @@
+<h1>Hello, <welcome /></h1>
+<div class="calc">
+    <div class="calc__top">
+        <ul>
+            <li class="active"><a href="#">Calculator</a></li>
+            <li><a href="/{{solutionId}}/leads">Leads</a></li>
+        </ul>
+    </div>
+    <div class="calc__wrap">
+        <div class="calc__select">
+            <ul class="calc__list">
+                <li class="calc__item"><a href="/{{solutionId}}/edit/design">Choose design</a></li>
+                <li class="calc__item"><a href="/{{solutionId}}/edit/fields">Calculator Form</a></li>
+                <li class="calc__item"><a href="/{{solutionId}}/edit/graph">Result graph</a></li>
+                <li class="calc__item"><a href="/{{solutionId}}/edit/contacts">Lean Gen form</a></li>
+                <li class="calc__item calc__item--active"><a href="#">Get code</a></li>
+            </ul>
+        </div>
+        <div class="calc__choose">
+            <div class="calc__choose-txt">
+                <h4>Get code</h4>
+                <p>
+                    Copy &amp; paste the code below. Some text and instruction on how to install the plugin...
+                </p>
+            </div>
+            <div class="get-code">
+                <xmp id="copy-text">
+                    {{cdn}}
+                </xmp>
+            </div>
+            <div class="get-code__btn-wrap">
+                <a href="#" class="get-code__btn" data-clipboard-target="#copy-text"><i></i>Copy code</a>
+            </div>
+        </div>
+        <div class="calc__buttons">
+            <preview />
+            <a href="/" class="calc__btn calc__btn--green-theme calc__btn--right">finish</a>
+            <a href="/{{solutionId}}/edit/contacts" class="calc__btn calc__btn--blue-theme calc__btn--right">back</a>
+        </div>
+    </div>
+</div>
